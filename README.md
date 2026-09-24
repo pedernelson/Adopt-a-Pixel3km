@@ -8,11 +8,19 @@ This repository is the developing public home for the AaP3Km Digital Visitor Cen
 
 > **Repository status:** Initial public structure under development. A file or place listed as a candidate is not yet a completed or accepted Traveling Archive.
 
+## Visit the Digital Visitor Center
+
+[Open the AaP3Km Digital Visitor Center](https://pedernelson.github.io/Adopt-a-Pixel3km/)
+
+The live site is the public, visitor-facing entrance to featured places, the local-to-global spatial framework, long-term evidence timelines, Place Biographies, process STEPs, and reviewed Traveling Archives.
+
+The [GitHub repository](https://github.com/pedernelson/Adopt-a-Pixel3km) remains the source and version-history environment for the website and its supporting materials.
+
 ## Start here
 
-The public homepage is provided by [`index.html`](index.html).
+The live Visitor Center is generated from the repository's [`index.html`](index.html) file.
 
-When GitHub Pages is enabled for the `main` branch and repository root, the homepage becomes the visitor-center entrance to featured places, methods, and archive discovery.
+GitHub Pages publishes the site from the `main` branch and repository root.
 
 ## The local-to-global framework
 
@@ -126,14 +134,14 @@ Folders will be populated incrementally. Empty or planned folders do not imply c
 
 Source records do not become public Traveling Archives automatically.
 
-## 1. Resolve place identity
+### 1. Resolve place identity
 
 - Verify the AOI centerpoint.
 - Assign the durable MGRS Place Code.
 - Identify country, region, and place name without replacing the coordinate identity.
 - Record whether each coordinate is an AOI anchor, PSU center, SSU footprint, GLOBE site coordinate, or actual measurement coordinate.
 
-## 2. Assemble evidence
+### 2. Assemble evidence
 
 - Preserve SSU labels and PSU relationships.
 - Preserve actual GLOBE measurement coordinates rather than substituting site or grid coordinates.
@@ -141,7 +149,7 @@ Source records do not become public Traveling Archives automatically.
 - Attach map-producer evidence such as WorldCover and time-series evidence such as Landsat or LCMAP without allowing those products to overwrite Map User interpretation.
 - Carry incomplete and unresolved records forward as explicit open work.
 
-## 3. Review before public release
+### 3. Review before public release
 
 - Run coordinate and support sanity checks.
 - Resolve duplicates without deleting source lineage.
@@ -179,7 +187,7 @@ Scientific provenance should be retained while public-facing personal informatio
 
 ## Current development priorities
 
-1. Publish and verify the visitor-center homepage.
+1. Verify and refine the live visitor-center homepage.
 2. Add a credited local-to-global hero graphic.
 3. Create structurally equivalent featured-place pages for Oregon, the wider United States, and international examples.
 4. Build the archive-candidate registry around AOI centerpoints and durable MGRS Place Codes.
