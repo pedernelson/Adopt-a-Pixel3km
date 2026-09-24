@@ -126,14 +126,14 @@ Folders will be populated incrementally. Empty or planned folders do not imply c
 
 Source records do not become public Traveling Archives automatically.
 
-### 1. Resolve place identity
+## 1. Resolve place identity
 
 - Verify the AOI centerpoint.
 - Assign the durable MGRS Place Code.
 - Identify country, region, and place name without replacing the coordinate identity.
 - Record whether each coordinate is an AOI anchor, PSU center, SSU footprint, GLOBE site coordinate, or actual measurement coordinate.
 
-### 2. Assemble evidence
+## 2. Assemble evidence
 
 - Preserve SSU labels and PSU relationships.
 - Preserve actual GLOBE measurement coordinates rather than substituting site or grid coordinates.
@@ -141,7 +141,7 @@ Source records do not become public Traveling Archives automatically.
 - Attach map-producer evidence such as WorldCover and time-series evidence such as Landsat or LCMAP without allowing those products to overwrite Map User interpretation.
 - Carry incomplete and unresolved records forward as explicit open work.
 
-### 3. Review before public release
+## 3. Review before public release
 
 - Run coordinate and support sanity checks.
 - Resolve duplicates without deleting source lineage.
