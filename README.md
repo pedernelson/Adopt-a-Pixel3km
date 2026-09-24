@@ -1,38 +1,26 @@
-# Adopt-a-Pixel 3 km
+# AaP3Km
 
-## Every pixel is a real place. Every place has a biography.
+## Canonical repository for Adopt-a-Pixel 3 km
 
-**Adopt-a-Pixel 3 km (AaP3Km)** is a place-based Earth observation and geographic stewardship framework. It begins with explicit local geography, follows evidence through time, and connects field observations and human interpretation with regional, national, and global observing systems.
+**Adopt-a-Pixel 3 km (AaP3Km)** is a place-based Earth observation and geographic stewardship framework. This repository is the primary version controller and accepted source of truth for canonical schemas, Process STEP applications and releases, accepted registries, place-specific accepted records, checkout and check-in templates, and repository validation utilities.
 
-This repository publishes the **AaP3Km Digital Visitor Center**, the public discovery and orientation layer for featured places, the local-to-global spatial framework, long-term evidence timelines, Place Biographies, Process STEPs, and reviewed Traveling Archives.
+> **Repository role:** Canonical architecture and accepted records. Public discovery and visitor-facing presentation are provided separately through the [AaP3Km Digital Visitor Center](https://pedernelson.github.io/Adopt-a-Pixel3km/) and its [Visitor Center repository](https://github.com/pedernelson/Adopt-a-Pixel3km).
 
-> **Repository status:** Initial public structure under development. A place, file, or link identified as a candidate is not yet a completed, accepted, or immutable release.
+## Core control statement
 
-## Visit the Digital Visitor Center
+GitHub is the primary version controller and accepted source of truth. A Traveling Archive is a checked-out reSearch working object. Process STEP tools contribute records to one shared reSearch session. STEP03 assembles a check-in candidate, STEP04 reviews it, and an accepted candidate is committed externally without overwriting its parent.
 
-[Open the AaP3Km Digital Visitor Center](https://pedernelson.github.io/Adopt-a-Pixel3km/)
+## Durable place namespace
 
-The live site is generated from the repository's [`index.html`](index.html) file and published from the `main` branch through GitHub Pages.
+```text
+Earth/{MGRS_PLACE_CODE}/
+```
 
-## Repository roles
+The **MGRS Place Code** is the durable place namespace. EPSG:4326 latitude and longitude remain the authoritative coordinates. Study geometry is a separately versioned support object and may initially be `NOT_ESTABLISHED`.
 
-AaP3Km uses two public repositories with different responsibilities. They must not be treated as interchangeable sources of truth.
+A Place is a real physical location on Earth. Coordinates, coordinate reference systems, MGRS codes, survey records, sampling geometry, and raster supports describe relationships to that Place; they do not create or define the Place's existence.
 
-### Canonical architecture and accepted records
-
-The [`AaP3Km` repository](https://github.com/pedernelson/AaP3Km) is the primary version controller and accepted source of truth for:
-
-- canonical schemas;
-- versioned Process STEP applications and releases;
-- accepted Process STEP and place registries;
-- checkout, geometry, session, and check-in templates;
-- place-specific accepted records;
-- import and validation utilities;
-- architecture and workflow guidance.
-
-A Traveling Archive is a checked-out reSearch working object. Process STEP tools contribute records to one shared reSearch session. STEP03 assembles a check-in candidate, STEP04 reviews it, and an accepted candidate is committed externally without overwriting its parent.
-
-The canonical control flow is:
+## Canonical control flow
 
 ```text
 accepted Git commit
@@ -45,130 +33,180 @@ accepted Git commit
 → repository receipt
 ```
 
-### Digital Visitor Center and discovery
+### Control rules
 
-This [`Adopt-a-Pixel3km` repository](https://github.com/pedernelson/Adopt-a-Pixel3km) publishes:
+- Accepted records originate from an accepted Git commit.
+- A canonical checkout creates a working object without changing the accepted parent.
+- A Traveling Archive carries evidence, provenance, lineage, relationships, and open work into a reSearch session.
+- All Process STEPs contribute to one shared reSearch session ledger.
+- STEP03 assembles a check-in candidate; it does not accept the candidate.
+- STEP04 reviews the check-in candidate.
+- Accepted changes are committed externally through Git and do not overwrite the parent record.
+- The repository receipt records the resulting accepted state and lineage.
 
-- the public Digital Visitor Center;
-- introductory and explanatory materials;
+## Repository layout
+
+```text
+apps/steps/                 Versioned Process STEP HTML applications
+schemas/                    Canonical JSON schemas
+registry/                   Accepted Process STEP release and Place registries
+templates/                  Checkout, geometry, session, and check-in templates
+Earth/{MGRS_PLACE_CODE}/    Place-specific accepted records
+scripts/                    Import and validation utilities
+docs/                       Architecture, workflow, and style guidance
+```
+
+### `apps/steps/`
+
+Stores versioned Process STEP HTML applications. Each accepted application release must retain its STEP identity, build or release identifier, provenance, source hash, and validation record.
+
+### `schemas/`
+
+Stores canonical JSON schemas governing repository records, sessions, geometry, lineage, evidence, status, and check-in objects. Schema changes must be versioned and must not silently reinterpret existing accepted records.
+
+### `registry/`
+
+Stores accepted Process STEP release registries and Place registries. Registry entries are accepted records, not informal indexes.
+
+### `templates/`
+
+Stores canonical templates for checkouts, geometry, reSearch sessions, shared session ledgers, and check-in candidates.
+
+### `Earth/{MGRS_PLACE_CODE}/`
+
+Stores accepted records for one durable Place namespace. The MGRS Place Code organizes the repository, while authoritative EPSG:4326 latitude and longitude and versioned support geometries remain explicit within the records.
+
+### `scripts/`
+
+Stores deterministic import, validation, registry, hash, and release utilities. Scripts must report failures explicitly and must not silently normalize away source differences.
+
+### `docs/`
+
+Stores architecture, workflow, governance, terminology, naming, measurement, and release guidance. The project-wide style guide belongs here.
+
+## Repository-role boundary
+
+AaP3Km uses two public repositories with distinct responsibilities.
+
+### This canonical `AaP3Km` repository
+
+Controls:
+
+- canonical schemas;
+- accepted Process STEP releases;
+- accepted Process STEP and Place registries;
+- canonical templates;
+- accepted Place-specific records;
+- import and validation utilities;
+- architecture and governance documentation.
+
+### The `Adopt-a-Pixel3km` Visitor Center repository
+
+Publishes:
+
+- the AaP3Km Digital Visitor Center;
+- introductory and explanatory content;
 - featured-place discovery;
 - public methods orientation;
 - links to canonical accepted records and reviewed releases.
 
-This repository may summarize and link to canonical objects, but it must not independently redefine canonical schemas, accepted records, Process STEP releases, or place registries.
+The Visitor Center may summarize, discover, and link to canonical objects. It must not independently redefine canonical schemas, accepted records, Process STEP releases, or Place registries.
 
-## Durable place namespace
+## Project-wide naming and measurement standard
 
-Canonical accepted place records use:
-
-```text
-Earth/{MGRS_PLACE_CODE}/
-```
-
-The **MGRS Place Code** is the durable place namespace. EPSG:4326 latitude and longitude remain the authoritative coordinates. Study geometry is a separately versioned support object and may initially be `NOT_ESTABLISHED`.
-
-A coordinate describes a relationship to a real physical place. It does not create or define the existence of that place.
-
-## The local-to-global framework
-
-AaP3Km works outward from explicit local support while retaining relationships among scales:
+The authoritative style guide is:
 
 ```text
-5 m × 5 m SSU interpretation footprint
-        ↓
-100 m × 100 m PSU place and history unit
-        ↓
-3 km × 3 km AOI
-        ↓
-Landscape and regional context
-        ↓
-National comparison
-        ↓
-Global observing systems
+docs/AaP3Km_PROJECT_STYLE_GUIDE_v001_20260924.md
 ```
 
-Time extends across the same framework:
-
-```text
-Deep physical history
-→ geographic reference and surveys
-→ aerial photography
-→ Landsat and other satellite records
-→ present field observations
-→ interpretation history
-→ future watches
-```
-
-## Naming and measurement conventions
-
-The project-wide standard is maintained in:
-
-```text
-AaP3Km/docs/AaP3Km_PROJECT_STYLE_GUIDE_v001_20260924.md
-```
-
-The following conventions apply to public prose, figures, tables, maps, interfaces, Process STEPs, Place Biographies, Traveling Archives, and new machine-readable fields.
+The guide applies to new and actively revised public prose, figures, tables, maps, interfaces, Process STEPs, schemas, registries, Place Biographies, Traveling Archives, release packages, and teaching materials.
 
 ### Project names
 
-- Write **Adopt-a-Pixel 3 km (AaP3Km)** on first use.
-- Use **AaP3Km** thereafter.
-- Use `AaP3Km` for the canonical repository name.
-- Use `Adopt-a-Pixel3km` only for the Visitor Center repository slug or another system identifier that cannot contain spaces.
-- Use **AaP3Km Digital Visitor Center** for the public site.
+- First use: **Adopt-a-Pixel 3 km (AaP3Km)**
+- Later use: **AaP3Km**
+- Canonical repository: `AaP3Km`
+- Visitor Center repository slug: `Adopt-a-Pixel3km`
+- Public site name: **AaP3Km Digital Visitor Center**
 
-### Units and dimensions
-
-- Use SI symbols with a space between number and unit: **5 m**, **10 m**, **100 m**, **500 m**, and **3 km**.
-- Unit symbols remain singular and do not take periods.
-- Use the multiplication sign with spaces for dimensions: **5 m × 5 m**, **100 m × 100 m**, and **3 km × 3 km**.
-- Use an en dash for closed ranges, such as **2020–2021**.
-- Use **±2.5 m** when expressing the half-width of the standard SSU interpretation footprint and when that uncertainty interpretation is explicitly intended.
-- Do not treat nominal spatial resolution as positional accuracy, interpretation support, or thematic certainty.
-
-### Sampling-unit names
-
-On first use, write:
-
-- **Area of Interest (AOI)**;
-- **Primary Sample Unit (PSU)**;
-- **Secondary Sample Unit (SSU)**.
-
-Thereafter use **AOI**, **PSU**, and **SSU**.
-
-Use **PSU 0** in ordinary prose. Use **PSU-00** in fixed-width machine identifiers and optional map-label layers.
-
-### Coordinate wording
-
-- Use **center point** as two words in prose.
-- Preserve source-schema fields such as `centerpoint`, `aoi_center`, or `center_point` when quoting or exchanging machine-readable data.
-- Display geographic coordinates as **latitude, longitude**.
-- Identify the coordinate role, such as AOI center point, PSU center point, SSU footprint center, GLOBE site coordinate, GLOBE measurement coordinate, map-product query coordinate, or raster-pixel center.
-- Preserve full source precision in machine-readable records. Shortened display precision must not imply greater positional accuracy.
+Repository slugs, historical filenames, source fields, and established machine identifiers retain their actual values for provenance.
 
 ### Formal object names
 
-Capitalize formal AaP3Km objects and concepts, including:
+Capitalize formal AaP3Km objects and concepts:
 
-- **Place Biography**;
-- **Traveling Archive**;
-- **Process STEP** and **Process STEPs**;
-- **MGRS Place Code**;
-- **Map Producer**;
-- **Map User**;
-- **Public Spectral Steward**;
-- **Community Chronicles**;
-- **Earth System**;
-- **Human Intent**;
-- **Human Experience**;
-- **Observations**;
-- **Interpretation History**.
+- **Place**
+- **Place Biography**
+- **Traveling Archive**
+- **Process STEP** and **Process STEPs**
+- **MGRS Place Code**
+- **Map Producer**
+- **Map User**
+- **Public Spectral Steward**
+- **Community Chronicles**
+- **Earth System**
+- **Human Intent**
+- **Human Experience**
+- **Observations**
+- **Interpretation History**
 
-Use **Earth observation** as a noun and **Earth-observation** as a compound adjective. Use **land cover** as a noun and **land-cover** as a compound adjective.
+### Metric units and dimensions
 
-## Sampling geography
+Use SI unit symbols with a space between the numerical value and the unit:
 
-An AaP3Km Area of Interest is a **3 km × 3 km AOI** centered on a random or otherwise documented physical-place anchor.
+- `5 m`
+- `10 m`
+- `100 m`
+- `500 m`
+- `1,500 m`
+- `3 km`
+
+Use the multiplication sign with spaces for dimensions:
+
+- `5 m × 5 m`
+- `100 m × 100 m`
+- `3 km × 3 km`
+- `10 × 10 grid`
+
+Unit symbols remain singular and do not take periods. Do not treat nominal spatial resolution as positional accuracy, interpretation support, or thematic certainty.
+
+### Sampling-unit names
+
+On first use:
+
+- **Area of Interest (AOI)**
+- **Primary Sample Unit (PSU)**
+- **Secondary Sample Unit (SSU)**
+
+Thereafter use **AOI**, **PSU**, and **SSU**.
+
+Use **PSU 0** in prose. Use **PSU-00** in fixed-width machine identifiers and optional map-label layers.
+
+### Coordinates and coordinate roles
+
+- Public display order: **latitude, longitude**
+- Authoritative exchange coordinates: EPSG:4326 latitude and longitude
+- Durable namespace: MGRS Place Code
+- Prose form: **center point**
+- Machine fields: preserve established forms such as `centerpoint`, `aoi_center`, or `center_point`
+
+Identify coordinate role whenever ambiguity is possible:
+
+- AOI center point
+- PSU center point
+- SSU grid point
+- SSU interpretation-footprint center
+- GLOBE site coordinate
+- GLOBE measurement coordinate
+- map-product query coordinate
+- raster-pixel center
+
+Preserve full source precision in machine-readable records. Displaying more decimal places does not establish greater positional accuracy.
+
+## Canonical sampling geometry
+
+An AaP3Km Area of Interest is a **3 km × 3 km AOI** centered on a documented physical-place anchor.
 
 - The AOI extends **±1,500 m** from its origin.
 - The AOI contains **37 PSUs** using zero-based indexing.
@@ -177,11 +215,13 @@ An AaP3Km Area of Interest is a **3 km × 3 km AOI** centered on a random or oth
 - Each PSU contains **100 SSUs** arranged in a **10 × 10 grid** with **10 m** center-to-center spacing.
 - Each SSU has a standard **5 m × 5 m interpretation footprint** centered on its grid location.
 
-The AOI center point, which is also the center point of PSU 0, identifies the Place Biography and Traveling Archive. SSU interpretations and field observations retain their actual coordinates, dates, spatial supports, source identities, coordinate roles, and uncertainties.
+The AOI center point is also the center point of PSU 0. Points are anchors to explicit supports; they are not assumed to be infinitesimal locations.
 
-## Place Biographies
+Study geometry is independently versioned and may be `NOT_ESTABLISHED` during early checkout or unresolved work. Geometry status must not be inferred from the presence of a Place namespace alone.
 
-A Place Biography connects five synchronized evidence timelines:
+## Place Biography evidence model
+
+A Place Biography synchronizes five evidence timelines:
 
 1. **Earth System**  
    Physical history, geology, climate, hydrology, vegetation, disturbance, and recovery.
@@ -198,159 +238,221 @@ A Place Biography connects five synchronized evidence timelines:
 5. **Interpretation History**  
    Labels, maps, scientific analyses, disagreements, uncertainty, reconciliation, revision, and accepted archive states.
 
-No single observer or Map Producer defines the place. Evidence types remain distinct and traceable.
+No single observer or Map Producer defines the Place. Evidence types remain distinct and traceable.
 
-## Traveling Archives
+## Traveling Archive and reSearch rules
 
-A Traveling Archive is a durable, evidence-bearing representation of a Place Biography. It preserves:
+A Traveling Archive is a checked-out, evidence-bearing reSearch working object. It carries:
 
-- what was known;
-- when it was known;
-- how it was known;
-- the spatial and temporal supports involved;
-- source identities and processing lineage;
-- accepted interpretations and claim boundaries;
+- Place identity and lineage;
+- source-native observations;
+- authoritative coordinates and coordinate roles;
+- versioned spatial and temporal supports;
+- processing and retrieval provenance;
+- Map Producer records;
+- Map User interpretations;
+- uncertainty and QA states;
+- accepted findings and claim boundaries;
 - unresolved and open work;
-- and future monitoring needs.
+- future watches.
 
-Traveling Archives are **dormant, not dead**. A released archive may later become the parent of a non-overwriting descendant when new observations, methods, plans, interpretations, or community knowledge become available.
+A Traveling Archive is not independently authoritative. It may become the parent of a non-overwriting descendant after review and external Git acceptance.
 
-A Traveling Archive is not independently authoritative. Canonical acceptance occurs through the `AaP3Km` repository control flow.
+Traveling Archives are **dormant, not dead**. An inactive archive remains available for later reactivation, extension, reinterpretation, or comparison when new observations, plans, methods, or community knowledge emerge.
 
-## Featured-place scope
+## Shared reSearch session ledger
 
-The Digital Visitor Center remains balanced across geography:
+All Process STEPs contribute records to a shared reSearch session ledger. A STEP contribution must preserve:
 
-- **Oregon roots**, including Corvallis and Oregon State University, the Willamette Stone as a geographic-reference story, Mount Hood, the Columbia Gorge, and the Oregon Coast.
-- **United States breadth**, including participant and publication-linked examples from Maine, California, Texas, New York, and other locations.
-- **International reach**, including cohort and GLOBE Observer examples from India, Taiwan, Thailand, Panama, Saudi Arabia, and other countries.
+- STEP identity and release;
+- session identity;
+- Place identity;
+- source record identity;
+- operation date and status;
+- input and output relationships;
+- coordinate and support roles;
+- evidence status;
+- unresolved conditions;
+- responsible review state;
+- parent and descendant lineage.
 
-Oregon is an important project and stewardship foundation, but AaP3Km is not limited to Oregon. Each Place Biography begins with the geographic, physical, historical, and cultural foundations appropriate to that place.
+STEP-specific files or interface state must not substitute for the shared ledger.
 
-## Repository structure
+## Status vocabulary
 
-### Canonical `AaP3Km` repository
+Use explicit status values. Do not collapse distinct states into *missing* or *failed*.
+
+Recommended public and machine-readable concepts include:
+
+- **Accepted record**
+- **Reviewed release**
+- **Working object**
+- **Check-in candidate**
+- **Candidate Place**
+- **Accepted as Place evidence**
+- **Accepted with caution**
+- **Accepted as context evidence**
+- **QA only**
+- **Diagnostic only**
+- **Unresolved / open work**
+- **Failed source**
+- **Not attempted**
+- **Zero results**
+- `NOT_ESTABLISHED`
+
+A successful zero-result query is not a failure. A failed request is not equivalent to not attempted. Geometry that is `NOT_ESTABLISHED` is not equivalent to missing accepted geometry.
+
+## Process STEP HTML import
+
+Place the 13 Build002 HTML source files beside:
 
 ```text
-apps/steps/                 Versioned Process STEP HTML applications
-schemas/                    Canonical JSON schemas
-registry/                   Accepted Process STEP release and place registries
-templates/                  Checkout, geometry, session, and check-in templates
-Earth/{MGRS_PLACE_CODE}/    Place-specific accepted records
-scripts/                    Import and validation utilities
-docs/                       Architecture and workflow guidance
+scripts/import_step_html.sh
 ```
 
-### Visitor Center `Adopt-a-Pixel3km` repository
+Run the importer from the repository root. The importer verifies each source SHA-256 before copying the file into:
 
 ```text
-Adopt-a-Pixel3km/
-├── index.html              Public Digital Visitor Center homepage
-├── README.md               Repository orientation and project principles
-├── assets/
-│   └── images/             Reviewed public images and graphics
-├── places/                 Public Place Biography discovery pages
-├── methods/                Public methods and terminology
-└── rights/                 Rights, licenses, and third-party notices
+apps/steps/{STEP}/releases/Build002/
 ```
 
-Presentation paths should link to canonical accepted records rather than duplicate or redefine them.
+Do not bypass hash verification, rename Build002 source files without updating the verified import manifest, or present unverified files as accepted Process STEP releases.
 
-## Archive candidate pipeline
+## Source-schema preservation
 
-Source records do not become public Traveling Archives automatically.
+Do not normalize away scientifically meaningful source differences.
 
-### 1. Resolve place identity
+Preserve:
 
-- Verify the AOI center point.
-- Assign the durable MGRS Place Code.
-- Identify country, region, and place name without replacing coordinate identity.
-- Record whether each coordinate is an AOI center point, PSU center point, SSU footprint center, GLOBE site coordinate, GLOBE measurement coordinate, map-product query coordinate, or raster-pixel center.
+- native field names;
+- raw producer values;
+- original labels;
+- source IDs;
+- retrieval timestamps;
+- coordinate roles;
+- declared accuracy;
+- spatial and temporal supports;
+- QA states;
+- processing lineage;
+- source license and attribution.
 
-### 2. Assemble evidence
-
-- Preserve SSU labels and PSU relationships.
-- Preserve actual GLOBE measurement coordinates rather than substituting site or grid coordinates.
-- Retain directional photographs, dates, classifications, coordinate accuracy, source IDs, and native schemas.
-- Attach Map Producer evidence such as WorldCover and time-series evidence such as Landsat or LCMAP without allowing those products to overwrite Map User interpretation.
-- Carry incomplete and unresolved records forward as explicit open work.
-
-### 3. Review before public release
-
-- Run coordinate and support sanity checks.
-- Resolve duplicates without deleting source lineage.
-- Harmonize labels while preserving raw values.
-- Separate accepted evidence, contextual evidence, caution states, QA-only records, and failed or unresolved sources.
-- Review personal information, credentials, private links, participant identifiers, culturally sensitive information, redistribution rights, and third-party licenses.
-- Document claim boundaries and unresolved blockers.
+Harmonized labels, summaries, and public cards are derived views and must link back to source-native records.
 
 ## Scientific principles
 
 - **Geography first.** Establish and verify mapped geography before analysis or labeling.
-- **Points are anchors, not infinitesimal supports.** Preserve the footprint, pixel, field of view, or other area represented by each record.
+- **Points are anchors, not infinitesimal supports.** Preserve the footprint, pixel, field of view, or other support represented by each record.
 - **Same place, same time, and corresponding support come before thematic agreement.**
 - **Map Producer and Map User uncertainty remain separate.**
 - **Nominal spatial resolution is not positional accuracy or thematic certainty.**
 - **Stable classes can contain restless pixels.** Preserve temporal and spectral evidence even where a thematic class appears unchanged.
 - **Every PSU matters.** Stable, unresolved, low-priority, and no-event locations remain visible.
-- **Raw source identities and values are preserved.** Derived and harmonized values must remain traceable to them.
+- **Raw source identities and values are preserved.** Derived records must remain traceable to them.
 - **Incomplete work is explicit.** Missing labels, failed requests, zero-result searches, and unresolved evidence do not silently disappear.
+- **Parents are not overwritten.** Accepted descendants preserve ancestry and decision history.
 
-## Public-release and privacy policy
+## Map and figure requirements
 
-Before any archive, dataset, photograph collection, or repository package is released publicly, it must receive a disclosure and rights review.
+When showing AOI, PSU, or SSU geometry, identify the object and support:
 
-Public releases must not expose:
+- `AOI · 3 km × 3 km`
+- `PSU 0 · 100 m × 100 m`
+- `SSU interpretation footprint · 5 m × 5 m`
 
-- participant or contributor email addresses unless there is a documented public-use reason and permission;
-- credentials, access tokens, secrets, or private service URLs;
-- private reviewer or editorial material;
-- restricted, culturally sensitive, or protected location information;
-- third-party material without appropriate rights and attribution;
-- unsupported claims of archive completeness, equivalence, acceptance, or scientific certainty.
+AOI, PSU, and SSU geometry should remain visually unobscured and unfilled when interpreted against imagery. If shading is needed, apply it outside the focus geometry. Plot and PSU labels, including `PSU-00`, should be a separate optional layer.
 
-Scientific provenance should be retained while public-facing personal information is minimized or separated.
+Scientific captions should identify the Place, time, support, observer or Map Producer, coordinate or CRS basis when relevant, interpretation boundary, uncertainty, source, and reuse attribution.
 
-## Current development priorities
+## Validation and acceptance
 
-1. Apply the project-wide style guide across the Digital Visitor Center, canonical documentation, maps, figures, and new records.
-2. Add a credited local-to-global hero graphic.
-3. Create structurally equivalent featured-place discovery pages for Oregon, the wider United States, and international examples.
-4. Build the candidate registry around AOI center points and durable MGRS Place Codes.
-5. Link Visitor Center presentations to canonical `Earth/{MGRS_PLACE_CODE}/` records.
-6. Publish Process STEP overviews without presenting unresolved lanes as complete.
-7. Release only disclosure-audited and rights-reviewed Traveling Archives.
-8. Connect immutable release snapshots with formal citations, checksums, and archival identifiers.
+A candidate is not accepted merely because it renders or exists in the repository working tree.
+
+Before acceptance, verify as applicable:
+
+- canonical schema conformance;
+- source-file identity and SHA-256;
+- coordinate order and coordinate role;
+- geometry status and CRS;
+- spatial and temporal support;
+- source-native values and lineage;
+- evidence and QA statuses;
+- unresolved conditions;
+- parent and descendant relationships;
+- disclosure and rights readiness;
+- registry update requirements.
+
+Acceptance must produce a repository receipt or equivalent traceable record.
+
+## Public disclosure and rights
+
+Before public release, inspect for:
+
+- personal data and participant identifiers;
+- email addresses and phone numbers;
+- credentials and tokens;
+- private URLs;
+- reviewer and editorial material;
+- restricted or culturally sensitive records;
+- redistribution restrictions;
+- third-party attribution and license requirements.
+
+Retain scientific provenance while minimizing or separating public-facing personal information. Public Visitor Center cards must not expose raw participant identifiers merely because they are present in source exports.
+
+## File, version, and release naming
+
+- Use descriptive filenames with version identifiers and `YYYYMMDD` dates.
+- Preserve historical source filenames in provenance records.
+- Never overwrite a delivered release silently.
+- Use SHA-256 for import and release verification.
+- Use immutable Git tags or DOI-bearing records for scientific citation.
+- Do not cite a moving branch as though it were an immutable release.
+- Preserve parent-child lineage for descendant Place Biographies and Traveling Archives.
+
+Examples:
+
+```text
+AaP3Km_PROJECT_STYLE_GUIDE_v001_20260924.md
+AaP3Km_SCHEMA_SESSION_LEDGER_v001_20260924.json
+AaP3Km_STEP03_CHECKIN_CANDIDATE_v001_20260924.json
+```
 
 ## Contributing
 
-Contributions should strengthen place identity, evidence traceability, temporal depth, support awareness, interpretation transparency, or long-term stewardship.
+Contributions should strengthen canonical architecture, Place identity, evidence traceability, support awareness, temporal depth, interpretation transparency, or long-term stewardship.
 
 Before proposing a change:
 
-1. Identify the physical place and coordinate role.
-2. Identify the evidence source and native schema.
-3. State the spatial and temporal support.
-4. Preserve uncertainty and quality information.
-5. Describe whether the contribution is an observation, context, interpretation, method, or open-work record.
-6. Follow the project-wide naming and measurement standard.
-7. Avoid overwriting accepted parent records. Submit lineage-preserving descendants.
-8. Confirm that public disclosure and redistribution are appropriate.
+1. Identify the Place and MGRS Place Code, if established.
+2. Identify authoritative coordinates and coordinate roles.
+3. Identify the source and preserve its native schema.
+4. State spatial and temporal support.
+5. Preserve uncertainty, QA, and unresolved status.
+6. Identify the relevant Process STEP, schema, registry, or accepted Place record.
+7. Preserve parent and descendant lineage.
+8. Follow the project-wide naming and measurement standard.
+9. Confirm disclosure and redistribution readiness.
+10. Do not overwrite accepted parent records.
 
 ## Citation and releases
 
-Do not cite a moving branch as though it were an immutable scientific release. Use a tagged GitHub release, DOI-bearing repository record, or another version-specific identifier when citing a published archive state.
+Use a tagged GitHub release, DOI-bearing repository record, or another immutable version-specific identifier when citing an accepted release.
 
-A `CITATION.cff` file and release-level citation instructions will be added when the first repository release is ready.
+A `CITATION.cff` file and release-level citation instructions should accompany the first formal repository release. Third-party records retain their original licenses and attribution requirements.
 
-## Rights and attribution
+## Current canonical priorities
 
-Project-created text, graphics, code, data products, and archive presentations require an explicit repository license before reuse terms can be assumed. Third-party records retain their original licenses and attribution requirements.
+1. Add the project-wide style guide under `docs/`.
+2. Audit existing repository prose, schemas, interfaces, and labels for naming and measurement consistency.
+3. Preserve the canonical repository and Visitor Center repository role boundary.
+4. Verify the Build002 Process STEP import manifest and source SHA-256 values.
+5. Maintain the shared reSearch session ledger across Process STEPs.
+6. Build and validate accepted Place registries under the durable MGRS namespace.
+7. Keep study geometry independently versioned and explicitly statused.
+8. Maintain disclosure, rights, lineage, and immutable-release discipline.
 
-A repository-wide license has not yet been declared in this initial Visitor Center repository. Until a license file and rights manifest are added, do not assume that every repository component has identical reuse terms.
+## Related public site
 
-## Contact and project context
+- [AaP3Km Digital Visitor Center](https://pedernelson.github.io/Adopt-a-Pixel3km/)
+- [Visitor Center source repository](https://github.com/pedernelson/Adopt-a-Pixel3km)
 
-AaP3Km is being developed through Oregon State University and related Earth observation, citizen science, education, publication, and stewardship collaborations.
-
-This repository makes the project understandable as a network of digital visitor centers for real places. It is not merely a collection of HTML tools or data files, and it does not replace the canonical `AaP3Km` repository.
+The Digital Visitor Center is the public discovery layer. This `AaP3Km` repository remains the canonical architecture and accepted-record system.
