@@ -14,37 +14,28 @@ This repository is the public discovery, learning, and presentation layer for Ad
 
 ```text
 Earth/{MGRS_PLACE_CODE}/{FULL_VERSIONED_ARTIFACT_FILENAME}
-learn/GroundToSatellite/{VERSIONED_LEARNING_TOOL_FILENAME}
+steps/STEP00/{VERSIONED_STEP00_TOOL_FILENAME}
 docs/{VERSIONED_PROJECT_STANDARD_FILENAME}
 ```
 
 Human-readable place names support discovery, but MGRS Place Codes remain the durable place namespace.
 
-### Course-neutral entry point
+### Generic STEP00 learning entry point
 
-The public learning architecture is intentionally not named for a single course. GEOG 580, other courses, workshops, cohorts, and independent investigations can use the same ground-to-satellite entry point while maintaining course-specific instructions in their own learning-management-system pages or subfolders.
+The shared learning pathway begins with a course-neutral, map-first STEP00: **Explore a Place and Begin Its Observation Record**. Courses, workshops, cohorts, and independent investigations can use this same entry point while keeping their own instructions in Canvas or another learning context.
 
-Course-specific materials may use paths such as `learn/courses/GEOG580/`, but the shared explorer remains at `learn/GroundToSatellite/`.
+**Public route:** `steps/STEP00/AaP3Km_STEP00_ExplorePlace_MapFirst.html`
 
-### Ground-to-satellite learning integration contract
+STEP00 guides a visitor through five actions: explore, compare, establish, validate, and preserve. The resulting baseline Traveling Archive carries place identity, authoritative geometry, AOI/PSU/SSU supports, source roles, observations, retrieval outcomes, open questions, geometry audit, and the STEP00 to STEP00.5 handoff.
 
-The GLOBE ground-to-satellite explorer is a cumulative weekly learning tool. Each weekly record begins with a GLOBE Observer measurement coordinate and time, then searches the satellite and remote-sensing registry for potential measurement partners. The accepted record must preserve:
+The initial reflection uses four plain-language prompts:
 
-- stable GLOBE observation identity;
-- measurement coordinates, time, and location accuracy when supplied;
-- directional ground photographs;
-- every satellite retrieval attempt and outcome;
-- collection, item, asset, acquisition time, bands, QA, CRS, and spatial support;
-- temporal and spatial relationship to the ground observation;
-- one or more accepted adjacent remote-sensing measurements;
-- map-producer interpretations as a separate evidence class;
-- student interpretation and unresolved uncertainty.
+- What do you want to investigate at this place?
+- Which observation, image, or map product may help?
+- What does that source help you notice or measure?
+- What additional evidence would help you check, refine, or challenge your first impression?
 
-The final term view places accepted remote-sensing measurements adjacent to ground photographs. It must not present discovery links, placeholders, stale canvases, or unverified products as retrieved evidence.
-
-**Reserved public path:** `learn/GroundToSatellite/GLOBE_GroundToSatellite_Explorer.html`
-
-Do not activate the Visitor Center link until multi-record testing verifies GLOBE retrieval, satellite provenance, evidence persistence, exports, and GitHub Pages behavior.
+The last question replaces the less clear wording, “It cannot establish ___ by itself.”
 
 ### Current public Traveling Archives
 
