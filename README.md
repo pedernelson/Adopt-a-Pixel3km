@@ -1,55 +1,61 @@
-## Adopt-a-Pixel 3 km Digital Visitor Center
+# Adopt-a-Pixel 3 km Digital Visitor Center
 
 **Live site:** [AaP3Km Digital Visitor Center](https://pedernelson.github.io/Adopt-a-Pixel3km/)
 
-This repository is the public discovery, learning, and presentation layer for Adopt-a-Pixel 3 km (AaP3Km). The separate [canonical AaP3Km repository](https://github.com/pedernelson/AaP3Km) remains the architecture and accepted-record system.
+This repository is the public discovery, learning, and presentation layer for Adopt-a-Pixel 3 km. The canonical AaP3Km repository remains the architecture and accepted-record system.
 
-### Three connected public pathways
+## Public pathways
 
-1. **Visit** — discover published Place Biographies and open versioned Traveling Archives.
-2. **Learn** — use place-and-time-anchored learning tools, including the reusable GLOBE ground-to-satellite workflow.
-3. **reSearch** — check out evidence, review unresolved work, and create non-overwriting descendants with explicit lineage.
+- **Visit:** locate Place Biographies and open their Traveling Archives.
+- **Learn:** begin a course-neutral, map-first STEP00 investigation.
+- **reSearch:** revisit evidence, preserve unresolved work, and create non-overwriting descendants with explicit lineage.
 
-### Repository organization
+## Welcome Center map
+
+The root `index.html` is an orientation map. It shows:
+
+- Traveling Archive anchors;
+- open-access published interpretation locations;
+- HLS product-tile context; and
+- unfilled 3 km × 3 km AaP3Km place areas.
+
+The Welcome Center deliberately does not display PSU boundaries, SSU footprints, local HLS 30 m cells, or GLOBE observations. Those details belong in STEP00 and the Traveling Archives.
+
+## STEP00
+
+Public route:
 
 ```text
-Earth/{MGRS_PLACE_CODE}/{FULL_VERSIONED_ARTIFACT_FILENAME}
-steps/STEP00/{VERSIONED_STEP00_TOOL_FILENAME}
-docs/{VERSIONED_PROJECT_STANDARD_FILENAME}
+steps/STEP00/AaP3Km_STEP00_ExplorePlace_MapFirst.html
 ```
 
-Human-readable place names support discovery, but MGRS Place Codes remain the durable place namespace.
+STEP00 begins with a real physical place and guides the user through five actions: explore, compare, establish, validate, and preserve. It includes live GLOBE API retrieval for `land_covers` and `tree_heights`; no separate GLOBE GeoJSON is required for the Welcome Center.
 
-### Generic STEP00 learning entry point
+STEP00 creates the 3 km × 3 km AOI from the documented physical-place anchor, constructs the metric AOI/PSU/SSU geography, records retrieval outcomes and unresolved work, runs the geometry audit, and produces a baseline Traveling Archive for the STEP00 to STEP00.5 handoff.
 
-The shared learning pathway begins with a course-neutral, map-first STEP00: **Explore a Place and Begin Its Observation Record**. Courses, workshops, cohorts, and independent investigations can use this same entry point while keeping their own instructions in Canvas or another learning context.
+## Repository paths
 
-**Public route:** `steps/STEP00/AaP3Km_STEP00_ExplorePlace_MapFirst.html`
+```text
+index.html
+README.md
+steps/STEP00/AaP3Km_STEP00_ExplorePlace_MapFirst.html
+Earth/{MGRS_PLACE_CODE}/{FULL_VERSIONED_ARCHIVE_FILENAME}
+```
 
-STEP00 guides a visitor through five actions: explore, compare, establish, validate, and preserve. The resulting baseline Traveling Archive carries place identity, authoritative geometry, AOI/PSU/SSU supports, source roles, observations, retrieval outcomes, open questions, geometry audit, and the STEP00 to STEP00.5 handoff.
+## Current Traveling Archive targets
 
-The initial reflection uses four plain-language prompts:
+```text
+Earth/10TDQ772346/AaP3Km_10TDQ772346_TravelingArchive_OSUCorvallis_v004_UnfilledFocus_OptionalLabels_20260912.html
+Earth/19TEK6001717522/AaP3Km_19TEK6001717522_WelcomeCenter_TravelingArchive_v1.4.1_MapDisplayFix_20260925.html
+Earth/19TEJ5375298161/AaP3Km_19TEJ5375298161_BassHarbor_TravelingArchive_v1.4.0_ReaderFirstCumulative_20260901.html
+Earth/21MXT6386590592/AaP3Km_21MXT6386590592_Obidos_Brazil_TravelingArchive_v1.16.0_UserFacingAuditClean_20260903.html
+Earth/21MXT6386590592/AaP3Km_21MXT6386590592_Obidos_Brazil_TravelingArchive_v1.32.0_AdvancedSTEPHandoff_20260904.html
+```
 
-- What do you want to investigate at this place?
-- Which observation, image, or map product may help?
-- What does that source help you notice or measure?
-- What additional evidence would help you check, refine, or challenge your first impression?
+## Upload layout
 
-The last question replaces the less clear wording, “It cannot establish ___ by itself.”
+Place each file at the exact path above. GitHub Pages paths are case-sensitive. Do not upload the versioned Welcome Center filename as the public entry point; rename `index_UPLOAD_20260926.html` to `index.html` during upload.
 
-### Current public Traveling Archives
+## Public-release boundary
 
-- `Earth/10TDQ772346/` — Corvallis and Oregon State University
-- `Earth/19TEJ5375298161/` — Bass Harbor
-- `Earth/19TEK6001717522/` — Acadia Welcome Center
-- `Earth/21MXT6386590592/` — Óbidos, Brazil
-
-The Acadia Welcome Center v1.4.1 map-display repair is the current public target. The v1.4.0 parent remains preserved for lineage.
-
-### Project standards
-
-- [Project style guide](docs/AaP3Km_PROJECT_STYLE_GUIDE_v003.md)
-- [Traveling Archive public contract](docs/AaP3Km_TRAVELING_ARCHIVE_PUBLIC_CONTRACT_v002.md)
-- [Traveling Archive migration plan](docs/AaP3Km_TRAVELING_ARCHIVE_MIGRATION_PLAN_v002.md)
-
-A Traveling Archive is a checked-out reSearch working object, not an independent source of truth. New interpretations and repairs become non-overwriting descendants with explicit parent lineage.
+The Welcome Center is an orientation and discovery layer. A Traveling Archive is a generated, read-only evidence carrier and is not independently authoritative. Open or unresolved evidence must remain explicit. Before publication, review personal information, credentials, private URLs, culturally sensitive material, editorial content, and redistribution or licensing constraints.
