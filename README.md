@@ -39,22 +39,24 @@ STEP00 creates the 3 km × 3 km AOI from the documented physical-place anchor, c
 index.html
 README.md
 steps/STEP00/AaP3Km_STEP00_ExplorePlace_MapFirst.html
-Earth/{MGRS_PLACE_CODE}/{FULL_VERSIONED_ARCHIVE_FILENAME}
+Earth/{FULL_VERSIONED_ARCHIVE_FILENAME}
 ```
+
+All public Traveling Archive HTML files are stored directly in the single `Earth/` directory. MGRS Place Codes remain in filenames, embedded archive metadata, MapLibre records, and lineage rather than becoming one folder per place.
 
 ## Current Traveling Archive targets
 
 ```text
-Earth/10TDQ772346/AaP3Km_10TDQ772346_TravelingArchive_OSUCorvallis_v004_UnfilledFocus_OptionalLabels_20260912.html
-Earth/19TEK6001717522/AaP3Km_19TEK6001717522_WelcomeCenter_TravelingArchive_v1.4.1_MapDisplayFix_20260925.html
-Earth/19TEJ5375298161/AaP3Km_19TEJ5375298161_BassHarbor_TravelingArchive_v1.4.0_ReaderFirstCumulative_20260901.html
-Earth/21MXT6386590592/AaP3Km_21MXT6386590592_Obidos_Brazil_TravelingArchive_v1.16.0_UserFacingAuditClean_20260903.html
-Earth/21MXT6386590592/AaP3Km_21MXT6386590592_Obidos_Brazil_TravelingArchive_v1.32.0_AdvancedSTEPHandoff_20260904.html
+Earth/AaP3Km_10TDQ772346_TravelingArchive_OSUCorvallis_v004_UnfilledFocus_OptionalLabels_20260912.html
+Earth/AaP3Km_19TEK6001717522_WelcomeCenter_TravelingArchive_v1.4.1_MapDisplayFix_20260925.html
+Earth/AaP3Km_19TEJ5375298161_BassHarbor_TravelingArchive_v1.4.0_ReaderFirstCumulative_20260901.html
+Earth/AaP3Km_21MXT6386590592_Obidos_Brazil_TravelingArchive_v1.16.0_UserFacingAuditClean_20260903.html
+Earth/AaP3Km_21MXT6386590592_Obidos_Brazil_TravelingArchive_v1.32.0_AdvancedSTEPHandoff_20260904.html
 ```
 
 ## Upload layout
 
-Place each file at the exact path above. GitHub Pages paths are case-sensitive. Do not upload the versioned Welcome Center filename as the public entry point; rename `index_UPLOAD_20260926.html` to `index.html` during upload.
+Place each Traveling Archive file directly in `Earth/` using the exact full versioned filename above. GitHub Pages paths are case-sensitive. Do not upload the versioned Welcome Center filename as the public entry point; rename `index_UPLOAD_20260926.html` to `index.html` during upload.
 
 ## Public-release boundary
 
