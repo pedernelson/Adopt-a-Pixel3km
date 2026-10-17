@@ -7,7 +7,7 @@ This repository is the public discovery, learning, and presentation layer for Ad
 ## Public pathways
 
 - **Visit:** locate Place Biographies and open their Traveling Archives.
-- **Learn:** begin a course-neutral, map-first STEP00 investigation.
+- **Learn:** begin with STEP00 place exploration and continue into STEP01 sample labeling.
 - **reSearch:** revisit evidence, preserve unresolved work, and create non-overwriting descendants with explicit lineage.
 
 ## Welcome Center map
@@ -33,12 +33,23 @@ STEP00 begins with a real physical place and guides the user through five action
 
 STEP00 creates the 3 km × 3 km AOI from the documented physical-place anchor, constructs the metric AOI/PSU/SSU geography, records retrieval outcomes and unresolved work, runs the geometry audit, and produces a baseline Traveling Archive for the STEP00 to STEP00.5 handoff.
 
+## STEP01
+
+Public route:
+
+```text
+steps/STEP01/AaP3Km_STEP01_SampleLabeling.html
+```
+
+STEP01 loads a STEP00 Traveling Archive and continues the workflow through controlled-vocabulary sample labeling. The tool preserves locked AOI, PSU, and SSU geography, supports SVG, Leaflet, and MapLibre rendering methods, records labeling progress, and exports child archives together with SSU CSV, GeoJSON, and PSU summary outputs.
+
 ## Repository paths
 
 ```text
 index.html
 README.md
 steps/STEP00/AaP3Km_STEP00_ExplorePlace_MapFirst.html
+steps/STEP01/AaP3Km_STEP01_SampleLabeling.html
 Earth/{FULL_VERSIONED_ARCHIVE_FILENAME}
 ```
 
